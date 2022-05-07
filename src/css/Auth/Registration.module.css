@@ -1,0 +1,80 @@
+.formRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 500px;
+}
+
+.formA {
+    width: 400px;
+}
+
+.formRegister h2 {
+    margin-top: 40px;
+    margin-left: 120px;
+    margin-bottom: 50px;
+}
+
+.checkbox {
+    bottom: -4px;
+    width: 35px;
+    position: relative;
+    height: 25px;
+    padding: 20px;
+}
+
+.label {
+    margin-top: -5px;
+}
+
+.input {
+    border: none;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    position: relative;
+    bottom: 15px;
+}
+
+.formData {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-bottom: 30px;
+    width: 300px;
+    margin-top: 20px;
+    font-size: 22px;
+    background-color: #FFE552;
+    border-radius: 20px;
+    margin-left: 110px;
+}
+
+.account {
+    margin-left: 150px;
+}
+
+.accountReg {
+    margin-left: 80px;
+}
+
+.button {
+    margin-bottom: 30px;
+    width: 200px;
+    margin-top: 20px;
+    font-size: 22px;
+    background-color: #FFE552;
+    border-radius: 20px;
+    margin-left: 120px;
+}

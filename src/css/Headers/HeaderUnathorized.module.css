@@ -1,0 +1,53 @@
+.wrapper {
+    background-color: red;
+    max-width: 100%;
+    padding: 10px;
+    height: 100px;
+}
+
+.search {
+    max-width: 150px;
+    border-radius: 50px;
+    margin-right: 5px;
+}
+
+.searchButton {
+    height: 40px;
+    max-width: 100px;
+    border-radius: 30px;
+}
+
+.links {
+    font-size: 18px;
+    margin-top: 8px;
+    margin-left: 10px;
+    display: flex;
+}
+
+.links a {
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    margin-top: -5px;
+    font-size: 25px;
+}
+
+Form {
+    margin-top: 10px;
+}
+
+.exitButton{
+    background-color:  #FFE552;
+    border: none;
+    margin-top: -5px;
+    text-transform: uppercase;
+
+}
