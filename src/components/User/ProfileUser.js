@@ -33,5 +33,6 @@ const ProfileUser = () => {
             </div>
         </div>
     )
+
 }
 export default ProfileUser;

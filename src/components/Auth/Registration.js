@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styles from '../../css/Auth/Registration.module.css'
-import {fetchCreateUser} from "../../api";
+import {fetchCreateUser, shelters} from "../../api";
 
 export default function Registration() {
     const [register, setRegister] = useState(() => {
@@ -32,6 +32,9 @@ export default function Registration() {
     };
     const submit = event => {
         event.preventDefault();
+
+        //shelters().then(response => console.log(response.data));
+
         fetchCreateUser({
             name: register.name,
             surname: register.surname,
@@ -43,7 +46,7 @@ export default function Registration() {
             window.location.replace('/login');
         })
             .catch(e => {
-                alert('Пользователь с такой почтой или номером телефоне уже есть' )
+                alert(e)
 
             })
     }

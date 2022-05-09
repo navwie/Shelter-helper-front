@@ -36,10 +36,18 @@ export default function Authorization() {
             localStorage.setItem('id', res.data.userId)
             localStorage.setItem('authToken', res.data.token);
             localStorage.setItem('authTokenDate', new Date().toISOString());
-            window.location.replace('/user/home/' + res.data.userId);
+            localStorage.setItem('role', res.data.role);
+
+            if(res.data.role === 'true'){
+                window.location.replace('/admin/home/' + res.data.userId);
+            }else{
+                window.location.replace('/user/home/' + res.data.userId);
+
+            }
+
         })
             .catch(e => {
-                alert('Логин или пароль были введены неправильно' )
+                alert(e)
             })
     }
     return (
