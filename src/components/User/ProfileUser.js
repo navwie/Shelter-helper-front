@@ -14,11 +14,9 @@ const ProfileUser = () => {
         const getUser = async () => {
             let store = localStorage.getItem('authToken')
             const res = await fetchUser(params.id, store).then(resolve => resolve.data);
-            const user = res.data
-            setUser(user)
-
+            //console.log(res);
         }
-        getUser().then(r => r.data)
+        getUser()
     }, [params.id])
 
     return (
@@ -33,5 +31,6 @@ const ProfileUser = () => {
             </div>
         </div>
     )
+
 }
 export default ProfileUser;

@@ -1,9 +1,10 @@
 import axios from "axios";
 
+
 const DEFAULT_HEADERS = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
 }
 
 const AUTH_HEADERS = (authToken) => {
@@ -16,7 +17,7 @@ const AUTH_HEADERS = (authToken) => {
 }
 export const fetchOrder = (params, authToken) => axios.post(`${process.env.REACT_APP_API_URL}/order`, params, {headers: AUTH_HEADERS(authToken)});
 export const updateUser = (id, params, authToken) => axios.put(`${process.env.REACT_APP_API_URL}/user/${id}`, params,  {headers: AUTH_HEADERS(authToken)});
-export const fetchUser = (id, authToken) => axios.get(`${process.env.REACT_APP_API_URL}/user/${id}`,  {headers: AUTH_HEADERS(authToken)});
+
 export const fetchSeat = (id) => axios.get(`${process.env.REACT_APP_API_URL}/seat/${id}`, {headers: DEFAULT_HEADERS});
 export const fetchHall = (id) => axios.get(`${process.env.REACT_APP_API_URL}/halls/${id}`, {headers: DEFAULT_HEADERS});
 export const fetchSessions = (id) => axios.get(`${process.env.REACT_APP_API_URL}/sessions/${id}`, {headers: DEFAULT_HEADERS});
@@ -29,6 +30,9 @@ export const fetchAllMovie = () => axios.get(`${process.env.REACT_APP_API_URL}/m
 export const fetchShowMovie = (id) => axios.get(`${process.env.REACT_APP_API_URL}/movies/${id}`, {headers: DEFAULT_HEADERS});
 export const updateMovie = (id, params, authToken) => axios.put(`${process.env.REACT_APP_API_URL}/movies/${id}`, params,  {headers: AUTH_HEADERS(authToken)});
 export const deleteMovie = (id, authToken) => axios.delete(`${process.env.REACT_APP_API_URL}/movies/${id}`,  {headers: AUTH_HEADERS(authToken)});
-export const fetchCreateUser = (params, authToken) => axios.post(`${process.env.REACT_APP_API_URL}/register`, params, {headers: AUTH_HEADERS(authToken)});
-export const fetchLoginUser = (params) => axios.post(`${process.env.REACT_APP_API_URL}/login`, params, {headers: DEFAULT_HEADERS});
 
+
+export const fetchUser = (id, authToken) => axios.get(`${process.env.REACT_APP_API_URL}/user/${id}`,  {headers: AUTH_HEADERS(authToken)});
+export const fetchCreateUser = (params) => axios.post(`${process.env.REACT_APP_API_URL}/register`, params );
+export const fetchLoginUser = (params) => axios.post(`${process.env.REACT_APP_API_URL}/login`, params)
+export const shelters = () => axios.get(`${process.env.REACT_APP_API_URL}/shelters`, {headers: DEFAULT_HEADERS});

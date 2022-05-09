@@ -10,24 +10,45 @@ import ProfileAdmin from "./components/Admin/ProfileAdmin";
 import CreateShelter from "./components/Admin/CreateShelter";
 import CreateAnimal from "./components/Admin/CreateAnimal";
 import CreateAnnouncement from "./components/Admin/CreateAnnouncement";
+import HeaderAdmin from "./components/Headers/HeaderAdmin";
+import HeaderUser from "./components/Headers/HeaderUser";
 
 
 function App() {
     const [storage, setStorage] = useState([])
+    const [role, setRole] = useState([])
+
 
     useEffect(() => {
         let store = localStorage.getItem('authToken')
+        let role = localStorage.getItem('role')
         setStorage(store)
+        setRole(role)
+
     }, [])
 
     return (
         <div>
-          <Header/>
+            {
+                storage === null && role !== undefined
+                    ? <Header/>
+                    : (role === 'true' ? <HeaderAdmin/> : <HeaderUser/>)
+            }
             <Routes>
+                <Route path="/changeUser/:id" element={
+                    storage === null
+                        ? <Authorization/>
+                        : <ChangeUser/>
+                }/>
+
+                <Route path="/profileUser/:id" element={
+                    storage === null
+                        ? <Authorization/>
+                        : <ProfileUser/>
+                }/>
+
                 <Route path='/login' element={<Authorization/>}/>
                 <Route path='/register' element={<Registration/>}/>
-                <Route path='/changeUser' element={<ChangeUser/>}/>
-                <Route path='/profileUser' element={<ProfileUser/>}/>
                 <Route path='/profileAdmin' element={<ProfileAdmin/>}/>
                 <Route path='/createShelter' element={<CreateShelter/>}/>
                 <Route path='/createAnimal' element={<CreateAnimal/>}/>

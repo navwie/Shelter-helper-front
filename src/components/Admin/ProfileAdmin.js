@@ -30,7 +30,7 @@ const ProfileAdmin = () => {
                             <h2>Данные об админе</h2>
                             <div className="data">
                                 <p className="dataTitle">Имя</p>
-                                <p>Здесь имя</p>
+                                <p>{user.name}</p>
                             </div>
                             <div className="data">
                                 <p className="dataTitle">Фамилия</p>
