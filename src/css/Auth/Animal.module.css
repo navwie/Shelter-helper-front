@@ -1,0 +1,51 @@
+.containerAnimal{
+    width: 50%;
+    background-color: #fff;
+    margin: 0 auto;
+    height: auto;
+    padding: 50px;
+    border-radius: 50px;
+}
+.containerAnimal img{
+    width: 35%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.animal{
+    display: flex;
+    text-align: start;
+}
+
+.shelter{
+    display: flex;
+    text-align: start;
+}
+
+.info{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.containerAnimal p{
+    color: red;
+    font-size: 24px;
+    margin-right: 593px;
+    margin-top: -5px;
+    margin-bottom: 31px;
+}
+.p{
+    margin-bottom: 17px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.info strong{
+    font-style: italic;
+    font-size: 18px;
+    position: relative;
+    right: 10px;
+}
+.bookedAnimal p{
+    margin-left: 300px;
+    font-weight: 700;
+}

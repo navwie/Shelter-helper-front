@@ -1,92 +1,115 @@
-import React, {Component} from 'react';
-import styles from '../../css/Admin/CreateShelter.module.css'
-import {
-    createMovie,
-} from "../../api";
-import {Link} from "react-router-dom";
+import React from 'react';
+import styles from '../../css/Admin/CreateAnnouncement.module.css'
+import {Link, useParams} from "react-router-dom";
+import {createAnnouncement, createShelter, fetchUser} from "../../api";
+import {useEffect, useState} from "react";
+import logo from "../../img/icons8-кошачий-след-100 13.png";
+import Swal from "sweetalert2";
+import {useTranslation} from "react-i18next";
 
-export default class CreateAnnouncement extends Component {
+const CreateAnnouncement = () => {
+    const params = useParams();
+    const [description, setDescription] = useState([])
+    const [needs, setNeeds] = useState([])
+    const [user, setUser] = useState([])
+    const [id, setId] = useState('')
+    const {t, i18n} = useTranslation();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            description: "",
-            needs: ""
-        };
-        this.submit = this.submit.bind(this);
-    }
 
-    submit = event => {
-        event.preventDefault();
-        let animal = {
-            description: this.state.description,
-            needs: this.state.needs
+    useEffect(() => {
+        const getUser = async () => {
+            let store = localStorage.getItem('authToken')
+            let id = localStorage.getItem('id')
+            setId(id)
+            const res = await fetchUser(id, store).then(resolve => resolve.data);
+            let user = res[0].shelters[0].id
+            setUser(user)
         }
+        getUser()
+    }, [params.id])
 
-        createMovie(animal).then(response => {
-            this.setState({response: response.data});
-        }).catch(errors => {
-            this.setState({valid: errors.response.data.errors});
-        })
-    }
+    const submit = () => {
+        let store = localStorage.getItem('authToken')
+        let userId = localStorage.getItem('id')
 
-    handleChanges = (field, value) => {
-        let fieldString = `${field}`;
-        let input = document.getElementById(fieldString);
-        if (value.target.value === "") {
-            input.style.border = '3px solid red';
-        } else {
-            input.style.border = '';
-            input.style.borderBottom = '2px solid #000';
+        let announcement = {
+            topic: needs,
+            description: description,
+            shelter_id: user
         }
-        this.setState({[fieldString]: value.target.value})
+        createAnnouncement({announcement}, store).then(res => Swal.fire({
+                title: 'Вітаємо, ви успішно створили об`яви!',
+                icon: 'success',
+                confirmButtonText: 'ОК'
+            }
+        ).then(function () {
+            window.location.replace(`/admin/home/` + userId);
+        }))
+            .catch(e => {
+                alert(e)
+
+            })
     }
 
-    setSelect(event) {
-        this.setState({gender: event.target.value})
+    const addDescription = (e) => {
+        console.log(e.target.value)
+        setDescription(e.target.value)
     }
 
-    render() {
-        return (
+    const change = (event) => {
+        console.log(event.target.value)
+        setNeeds(event.target.value)
+    }
+
+
+    const select = {
+        width: '500px',
+        padding: '10px',
+        borderRadius: '20px',
+        backgroundColor: '#F2D8C0',
+        border: '1px solid #F2D8C0',
+        fontFamily: `'Comfortaa', cursive`,
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: '22px',
+        lineHeight: '36px',
+        marginBottom: '50px'
+    }
+
+    return (
+        <div>
             <div className={styles.wrapper}>
-                <h1>Введіть дані про тварину</h1>
-                <form onSubmit={this.submit} encType="multipart/form-data">
-
+                <form onSubmit={submit}>
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <img src={logo} className="App-logo2" alt="logo"/>
+                    <h2>{t('create_announcement.title')}</h2>
                     <div className={styles.formElements}>
                         <div className={styles.elementsRight}>
                             <div>
-                                <select id="needs" onChange={this.setSelect.bind(this)}>
-                                    <option value="food">Їжа</option>
-                                    <option value="toys">Іграшки</option>
-                                    <option value="dishes">Посуд</option>
-                                    <option value="medicines">Медичні препарати</option>
+                                <select id="needs" onChange={change} style={select}>
+                                    <option value="food">{t('create_announcement.type.food')}</option>
+                                    <option value="toys">{t('create_announcement.type.toys')}</option>
+                                    <option value="dishes">{t('create_announcement.type.dishes')}</option>
+                                    <option value="medicines">{t('create_announcement.type.medicines')}</option>
                                 </select>
                             </div>
-                            <div className="description">
-                                <input name='description'
-                                       id='description'
-                                       type="text"
-                                       value={this.state.description}
-                                       placeholder="Опис потреби"
-                                       onClick={(item) => {
-                                           this.handleChanges("description", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("description", item)
-                                       }}
-                                />
+                            <div className={styles.description}>
+                            <textarea name='description'
+                                      id='description'
+                                      value={description}
+                                      placeholder={t('create_announcement.description')}
+                                      onChange={e => addDescription(e)}
+                            />
                             </div>
                         </div>
-
-
                     </div>
-                    <button className={styles.button}>
-                        <Link to='/adminMovies'>Додати об'яву</Link>
-                    </button>
                 </form>
             </div>
+            <button className={styles.btn} onClick={submit}>
+                {t('create_announcement.submit')}
+            </button>
+        </div>
 
-        )
-    }
-
+    )
 }
+export default CreateAnnouncement;

@@ -1,0 +1,310 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    position: relative;
+    left: 600px;
+    height: 1000px;
+    margin-bottom: 50px;
+    background: #fffefe;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+
+.wrapper h2 {
+    margin-left: 34px;
+    margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    color: #000000;
+}
+.data{
+    min-height: 110vh;
+}
+.inputName {
+    border: none;
+    width: 480px;
+    height: 50px;
+    position: relative;
+    right: 100px;
+    margin-bottom: 20px;
+    bottom: 15px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.inputWeight {
+    border: none;
+    width: 480px;
+    height: 50px;
+    position: relative;
+    right: 100px;
+    bottom: 15px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.sterilized {
+    margin-bottom: 50px;
+}
+
+.inputAge {
+    border: none;
+    width: 480px;
+    height: 50px;
+    position: relative;
+    right: 100px;
+    margin-top: 60px;
+    bottom: 15px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.inputFile {
+    border: none;
+    width: 250px;
+    height: 50px;
+    position: relative;
+    right: 20px;
+    bottom: 15px;
+    margin-top: 30px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.btn {
+    margin-bottom: 30px;
+    width: 300px;
+    margin-top: 13px;
+    margin-left: 19px;
+    background: #B18065;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    position: relative;
+    font-weight: 300;
+    font-size: 24px;
+    border: 1px solid #B18065;
+    padding: 10px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+
+.btnUpdate {
+    margin-bottom: 30px;
+    width: 300px;
+    margin-top: 13px;
+    margin-left: 19px;
+    background: #B18065;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    top: -130px;
+    left: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    position: relative;
+    font-weight: 300;
+    font-size: 24px;
+    border: 1px solid #B18065;
+    padding: 10px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+.input p{
+    position: relative;
+    left: -227px;
+    margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    top: 30px;
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 23px;
+
+    color: #000000;
+}
+.typeB{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+.input button{
+    background: #F2D8C0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #F2D8C0;
+    width: 160px;
+    height: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+    border-radius: 30px;
+}
+.input input{
+    width: 29px;
+    height: 30px;
+    color: #B18065;
+    border: 2px solid #999;
+    background-color: #B18065;
+    top: 5px;
+    right: 24px;
+    position: relative;
+}
+.input input[type='radio']:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 5px solid white;
+}
+
+.input input[type='radio']:checked:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #552807;;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 5px solid white;
+}
+
+.gender p{
+    position: relative;
+    left: -267px;
+    margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    top: 30px;
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 23px;
+
+    color: #000000;
+}
+.typeB{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+.gender button{
+    background: #F2D8C0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #F2D8C0;
+    width: 160px;
+    height: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+    border-radius: 30px;
+}
+.gender input{
+    width: 29px;
+    height: 30px;
+    color: #B18065;
+    border: 2px solid #999;
+    background-color: #B18065;
+    top: 5px;
+    position: relative;
+}
+.gender input[type='radio']:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.gender input[type='radio']:checked:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #552807;;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 5px solid white;
+}
+.formD{
+    width: 480px;
+    border: 1px solid #F2D8C0;
+    padding: 10px;
+    position: relative;
+    left: 10px;
+    margin-bottom: 30px;
+    font-family: 'Comfortaa', cursive;
+    background-color: #F2D8C0;
+    border-radius: 30px;
+
+    color: #000000;
+}
+.description textarea{
+    width: 700px;
+    border: 1px solid #F2D8C0;
+    padding: 10px;
+    height: 100px;
+    position: relative;
+    margin-bottom: 30px;
+    font-family: 'Comfortaa', cursive;
+    background-color: #F2D8C0;
+    border-radius: 30px;
+    color: #000000;
+}

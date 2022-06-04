@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import styles from '../../css/Admin/CreateShelter.module.css'
+import styles from '../../css/Admin/CreateAnimal.module.css'
 import {
-    createMovie,
+    createAnimal, createShelter, fetchUser,
 } from "../../api";
 import {Link} from "react-router-dom";
+import logo from "../../img/icons8-кошачий-след-100 13.png";
+import Swal from "sweetalert2";
+import {Translation} from 'react-i18next';
 
 
 export default class CreateAnimal extends Component {
@@ -16,7 +19,9 @@ export default class CreateAnimal extends Component {
             weight: "",
             type: "",
             gender: "",
+            sterilized: '',
             photo: null,
+            description: ''
 
         };
         this.submit = this.submit.bind(this);
@@ -24,21 +29,40 @@ export default class CreateAnimal extends Component {
 
     submit = event => {
         event.preventDefault();
+        let shelter = JSON.parse(localStorage.getItem('shelter_id'));
+        console.log(shelter)
+
         let animal = {
             name: this.state.name,
-            age: this.state.address,
-            weight: this.state.phone,
+            birthday: this.state.age,
+            weight: this.state.weight,
             photo: this.state.photo,
             type: this.state.type,
             gender: this.state.gender,
+            sterilized: this.state.sterilized,
+            shelter_id: shelter[0],
+            description: this.state.description
         }
 
-        createMovie(animal).then(response => {
-            this.setState({response: response.data});
-        }).catch(errors => {
-            this.setState({valid: errors.response.data.errors});
-        })
+        let userId = localStorage.getItem('id')
+        console.log(userId)
+        this.setState({id: userId})
+
+        let store = localStorage.getItem('authToken')
+        createAnimal(animal, store).then(res => Swal.fire({
+                title: 'Вітаємо, ви успішно створили тварину!',
+                icon: 'success',
+                confirmButtonText: 'ОК'
+            }
+        ).then(function () {
+            window.location.replace(`/admin/home/` + userId);
+        }))
+            .catch(e => {
+                alert(e)
+
+            })
     }
+
 
     handleChanges = (field, value) => {
         let fieldString = `${field}`;
@@ -60,6 +84,10 @@ export default class CreateAnimal extends Component {
         this.setState({type: event.target.value})
     }
 
+    setSterilized(event) {
+        this.setState({sterilized: event.target.value})
+    }
+
     onChange(e) {
         let files = e.target.files;
         let reader = new FileReader()
@@ -71,79 +99,132 @@ export default class CreateAnimal extends Component {
 
     render() {
         return (
-            <div className={styles.wrapper}>
-                <h1>Введіть дані про тварину</h1>
-                <form onSubmit={this.submit} encType="multipart/form-data">
+            <Translation>
+                {
+                    (t, {i18n}) => {
+                        return <div className={styles.data}>
+                            <div className={styles.wrapper}>
+                                <form onSubmit={this.submit} encType="multipart/form-data">
+                                    <img src={logo} className="App-logo3" alt="logo"/>
+                                    <img src={logo} className="App-logo2" alt="logo"/>
+                                    <h2>{t(`create_animal.title`)}</h2>
+                                    <div className={styles.formElements}>
+                                        <div className={styles.elementsRight}>
+                                            <div className="name">
+                                                <input name='name'
+                                                       id='name'
+                                                       type="text"
+                                                       className={styles.inputName}
+                                                       value={this.state.name}
+                                                       placeholder={`${t(`create_animal.name`)}`}
+                                                       onClick={(item) => {
+                                                           this.handleChanges("name", item)
+                                                       }}
+                                                       onChange={(item) => {
+                                                           this.handleChanges("name", item)
+                                                       }}
+                                                />
+                                            </div>
+                                            <div>
+                                                <input name='weight'
+                                                       type="number"
+                                                       id='weight'
+                                                       placeholder={`${t(`create_animal.weight`)}`}
+                                                       value={this.state.weight}
+                                                       className={styles.inputWeight}
+                                                       onClick={(item) => {
+                                                           this.handleChanges("weight", item)
+                                                       }}
+                                                       onChange={(item) => {
+                                                           this.handleChanges("weight", item)
+                                                       }}/>
+                                            </div>
 
-                    <div className={styles.formElements}>
-                        <div className={styles.elementsRight}>
-                            <div className="name">
-                                <input name='name'
-                                       id='name'
-                                       type="text"
-                                       value={this.state.name}
-                                       placeholder="Название притулку"
-                                       onClick={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                />
-                            </div>
-                            <div>
-                                <input name='age'
-                                       type="text"
-                                       id='age'
-                                       placeholder="Вік"
-                                       value={this.state.age}
-                                       onClick={(item) => {
-                                           this.handleChanges("age", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("age", item)
-                                       }}
-                                />
-                            </div>
-                            <div>
-                                <input name='weight'
-                                       type="number"
-                                       id='weight'
-                                       placeholder="Вага тварини"
-                                       value={this.state.weight}
-                                       onClick={(item) => {
-                                           this.handleChanges("weight", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("weight", item)
-                                       }}/>
-                            </div>
+                                            <div className={styles.input} onChange={this.setType.bind(this)}>
+                                                <p>{t(`create_animal.type.title`)}:</p>
+                                                <div className={styles.typeB}>
+                                                    <button>
+                                                        <input type="radio" value="Пес" name="type"/> {t(`create_animal.type.dog`)}
+                                                    </button>
+                                                    <button>
+                                                        <input type="radio" value="Кіт" name="type"/> {t(`create_animal.type.cat`)}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className={styles.gender} onChange={this.setGender.bind(this)}>
+                                                <p>{t(`create_animal.gender.title`)}:</p>
 
-                            <div>
-                                <input name="photo"
-                                       type="file"
-                                       placeholder="Фото"
-                                       onChange={(e) => this.onChange(e)}
-                                />
-                            </div>
+                                                <div className={styles.typeB}>
+                                                    <button>
+                                                        <input type="radio" value="Хлопчик" name="gender"/> {t(`create_animal.gender.male`)}
+                                                    </button>
+                                                    <button>
+                                                        <input type="radio" value="Дівчинка" name="gender"/> {t(`create_animal.gender.female`)}
+                                                    </button>
+                                                </div>
+                                            </div>
 
-                            <div onChange={this.setType.bind(this)}>
-                                <input type="radio" value="dog" name="type"/> Пес
-                                <input type="radio" value="cat" name="type"/> Кіт
-                            </div>
+                                            <div className={styles.input} onChange={this.setSterilized.bind(this)}>
+                                                <p>{t(`create_animal.sterilization.title`)}</p>
 
-                            <div onChange={this.setGender.bind(this)}>
-                                <input type="radio" value="male" name="gender"/> Чоловічий
-                                <input type="radio" value="female" name="gender"/> Жіночий
+                                                <div className={styles.typeB}>
+                                                    <button>
+                                                        <input type="radio" value="false" name="sterilized"/> {t(`create_animal.sterilization.no`)}
+                                                    </button>
+                                                    <button>
+                                                        <input type="radio" value="true" name="sterilized"/> {t(`create_animal.sterilization.yes`)}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <input name='age'
+                                                       type="date"
+                                                       id='age'
+                                                       placeholder={`${t(`create_animal.date_format`)}`}
+                                                       value={this.state.age}
+                                                       className={styles.inputAge}
+                                                       onClick={(item) => {
+                                                           this.handleChanges("age", item)
+                                                       }}
+                                                       onChange={(item) => {
+                                                           this.handleChanges("age", item)
+                                                       }}
+                                                />
+                                            </div>
+
+                                            <div className={styles.formD}>
+                                                <input name="photo"
+                                                       type="file"
+                                                       placeholder="Фото"
+                                                       className={styles.customFileInput}
+                                                       onChange={(e) => this.onChange(e)}
+                                                />
+                                            </div>
+                                            <div className={styles.description}>
+                                    <textarea name='description'
+                                              id='description'
+                                              value={this.state.description}
+                                              placeholder={`${t(`create_animal.description`)}`}
+                                              onClick={(item) => {
+                                                  this.handleChanges("description", item)
+                                              }}
+                                              onChange={(item) => {
+                                                  this.handleChanges("description", item)
+                                              }}
+                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button className={styles.btn} onClick={this.submit}>
+                                        {t(`create_animal.submit`)}
+                                    </button>
+                                </form>
                             </div>
                         </div>
-                    </div>
-                    <button className={styles.button}>
-                        <Link to='/adminMovies'>Додати тварину</Link>
-                    </button>
-                </form>
-            </div>
 
+                    }
+                }
+            </Translation>
         )
     }
 

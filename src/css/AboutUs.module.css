@@ -1,0 +1,239 @@
+.wrapper{
+    min-height: 320vh;
+    height: 100%;
+}
+.animals{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: -300px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    bottom: 0;
+    margin: auto;
+    filter: blur(6px);
+    min-width: 50%;
+    max-width: 100%;
+    max-height: 90%;
+    width: 100%;
+    min-height: 50%;
+}
+.h2{
+    z-index: 4;
+    position: absolute;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    left: 90px;
+    font-size: 36px;
+    letter-spacing: 8px;
+    line-height: 60px;
+    text-align: center;
+
+    color: #552807;
+}
+
+.button {
+    z-index: 4;
+    position: absolute;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    left: 260px;
+    background: #F2D8C0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #F2D8C0;
+    bottom: 450px;
+    font-size: 18px;
+    line-height: 60px;
+    color: #552807;
+}
+.button a {
+    color: #552807;
+    text-decoration: none;
+}
+.button a:hover{
+    text-decoration: underline;
+    color: #fffefe;
+}
+.button:hover + .h2 {
+    opacity: 1;
+    color: #fffefe;
+    background-color: #fff;
+}
+.statistics{
+    display: flex;
+    justify-content: space-around;
+}
+.block{
+    width: 300px;
+    z-index: 4;
+    position: relative;
+    height: 200px;
+    bottom: -650px;
+    background: #F4F4F4;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+.block img{
+    width: 80px;
+    position: relative;
+    top: -30px;
+    right: 90px;
+}
+.block p {
+    font-family: 'Lemon', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    position: relative;
+    top: -20px;
+    text-align: center;
+    color: #000000;
+
+}
+.block .p{
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 16px;
+    text-align: center;
+    color: #552807;
+}
+
+hr{
+    z-index: 4;
+    position: relative;
+    bottom: -700px;
+}
+.aboutProject{
+    position: relative;
+    z-index: 4;
+    bottom: -750px;
+    margin-bottom: 100px;
+}
+.info{
+    display: flex;
+    justify-content: center;
+}
+
+.aboutProject h2{
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #000000;
+}
+
+.infoText{
+    width: 600px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 20px;
+    margin-right: 30px;
+    color: #552807;
+    text-align: justify;
+    background: #F4F4F4;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+.dogImg{
+    width: 650px;
+    margin-left: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo5{
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+.contacts{
+    position: relative;
+    bottom: -750px;
+    margin-bottom: 100px;
+}
+.ourShelter{
+    position: relative;
+    bottom: -750px;
+    margin-bottom: 100px;
+}
+
+.ourShelter img{
+    width: 350px;
+    z-index: 4;
+    margin-bottom: 50px;
+    position: relative;
+    height: 350px;
+    border-radius: 20px;
+    object-fit:cover;
+}
+.contacts h2{
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+    text-align: center;
+    color: #000000;
+
+}
+
+.ourShelter h2{
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 50px;
+    line-height: 36px;
+    text-align: center;
+    color: #000000;
+
+}
+
+.contactsEl{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.el{
+    display: flex;
+
+}
+.el p {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    position: relative;
+    left: 30px;
+    bottom: -40px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #552807;
+}
+.moreInfo p{
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #000000;
+}

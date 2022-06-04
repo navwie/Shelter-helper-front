@@ -5,6 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/js/dist/dropdown';
 import 'jquery/src/jquery.js'
 import 'bootstrap/dist/js/bootstrap.min.js';
 

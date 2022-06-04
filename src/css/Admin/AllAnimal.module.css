@@ -1,0 +1,237 @@
+.animal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: 50px;
+}
+
+.cardBody img {
+    width: 300px;
+    image-rendering: crisp-edges;
+    height: 210px;
+}
+
+.animalCard {
+    background-color: #fff;
+    height: 480px;
+    width: 300px;
+    margin-top: 80px;
+    margin-left: 77px;
+}
+
+.cardInfo .name {
+    background: #B18065;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 8px;
+    width: 234px;
+    height: 66px;
+    padding: 20px 10px 15px 10px;
+    position: relative;
+    top: -32px;
+    left: -40px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.genderInfo img {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: -33px;
+    left: 20px;
+}
+
+.genderInfo {
+    display: flex;
+}
+
+.genderInfo p {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    position: relative;
+    top: -17px;
+    left: 30px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.age {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    left: -105px;
+    top: -14px;
+    line-height: 17px;
+    position: relative;
+    color: #000000;
+
+}
+
+.sterilized {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    left: 41px;
+    line-height: 17px;
+    top: -45px;
+    position: relative;
+    color: #000000;
+}
+
+.description {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 17px;
+    top: -43px;
+    position: relative;
+    color: #000000;
+
+}
+
+.btn {
+    display: flex;
+    margin-top: -35px;
+    justify-content: space-evenly;
+}
+
+.btn a img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: -3px;
+}
+
+.btn a {
+    background-color: #B18065;
+    width: 90px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid #B18065;
+}
+
+.containerAnimal{
+    height: 210vh;
+}
+
+.choiceFilter{
+    width: 80%;
+    padding: 30px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.typeB{
+    display: flex;
+    margin-bottom: 30px;
+}
+.input button{
+    background: #F2D8C0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #F2D8C0;
+    width: 160px;
+    height: 50px;
+    margin-left: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+    border-radius: 30px;
+}
+.input input{
+    width: 29px;
+    height: 30px;
+    color: #B18065;
+    border: 2px solid #999;
+    background-color: #B18065;
+    top: 5px;
+    right: 24px;
+    position: relative;
+}
+.input input[type='radio']:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 5px solid white;
+}
+
+.input input[type='radio']:checked:after {
+    width: 29px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #552807;;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 5px solid white;
+}
+.btnCheck img{
+    width: 40%;
+}
+
+.btnCheck{
+    background-color: #552807;
+    border: 1px solid #552807;
+    width: 30%;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.btnRefresh{
+    background-color: #B18065;
+    border: 1px solid #B18065;
+    width: 30%;
+    border-radius: 30px;
+    margin-left: 20px;
+
+}
+
+.btnRefresh img{
+    width: 40%;
+}
+
+.btnA{
+    background-color: #B18065;
+    width: 133px;
+    height: 40px;
+    padding: 6px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid #B18065;
+    top: -30px;
+    left: 77px;
+}
+.btnA a{
+    color: white;
+    text-decoration: none;
+}
+
+.btnA a:hover{
+    color:white;
+    text-decoration: underline;
+}

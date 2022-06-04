@@ -1,7 +1,17 @@
+/*//font-family: 'Comfortaa', cursive;*/
+/*font-family: 'Lemon', cursive;*/
+
 .formRegister {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 600px;
+    position: relative;
+    left: 600px;
+    height: 638px;
+    background: #fffefe;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
 }
 
 .form {
@@ -14,8 +24,14 @@
 
 .formRegister h2 {
     margin-top: 40px;
-    margin-left: 120px;
+    margin-left: 20px;
     margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    color: #000000;
 }
 
 .checkbox {
@@ -32,12 +48,22 @@
 
 .input {
     border: none;
-    width: 200px;
-    height: 40px;
-    font-size: 20px;
-    border-bottom: 1px solid black;
+    width: 500px;
+    height: 50px;
     position: relative;
     bottom: 15px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    margin-bottom: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
 }
 
 .formData {
@@ -51,30 +77,37 @@ label {
     margin-bottom: 20px;
 }
 
+.App-logo {
+    pointer-events: none;
+    position: absolute;
+    top: 100px;
+    right: 120px;
+    z-index: 3;
+    opacity: 1;
+}
+.App-logo2 {
+    pointer-events: none;
+    position: absolute;
+    top: 400px;
+    z-index: 3;
+    left: 150px;
+    opacity: 1;
+}
+
 .btn {
     margin-bottom: 30px;
-    width: 300px;
-    margin-top: 20px;
-    font-size: 22px;
-    background-color: #FFE552;
-    border-radius: 20px;
-    margin-left: 110px;
-}
-
-.account {
-    margin-left: 150px;
-}
-
-.accountReg {
-    margin-left: 80px;
-}
-
-.button {
-    margin-bottom: 30px;
-    width: 200px;
-    margin-top: 20px;
-    font-size: 22px;
-    background-color: #FFE552;
-    border-radius: 20px;
-    margin-left: 120px;
+    width: 380px;
+    margin-top: 13px;
+    margin-left: 19px;
+    background: #B18065;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    border: 1px solid #B18065;
+    padding: 10px;
+    line-height: 27px;
+    color: #FFFFFF;
 }

@@ -1,0 +1,185 @@
+{
+    "unauth_header": {
+        "about": "About us",
+        "charts": "Charts of help",
+        "animals": "Animals",
+        "announcements": "Announcements",
+        "login": "Login",
+        "chart_animals": "Chart of given away animals",
+        "chart_shelters": "Chart of creating shelters",
+        "chart_announcement_create": "Chart of creating announcements",
+        "chart_announcement_done": "Chart of completed announcements"
+    },
+    "home": {
+        "logoFirst": "A platform ",
+        "logoSecond": "to help  animals",
+        "logoThird": "in shelters",
+        "button": "Create Shelter",
+        "animals": "Animals",
+        "shelters": "Shelters",
+        "about": "About project",
+        "year": "Year of project creation",
+        "info": "ShelterHelper is a modern platform for creating shelters. The platform has a rich functionality for finding shelters, viewing information about both shelters and animals in these shelters. ShelterHelper connects the person and the shelter, which allows you to have great integration for timely assistance to the shelter. The information system allows you to make contributions for food shelters and other goods that are necessary for each shelter",
+        "animal_shelters": "Animals and shelters",
+        "contacts": "Contacts",
+        "phone": "Mobile phone",
+        "email": "Email",
+        "address": "Address",
+        "street": "Street Lesya Ukrainka 11",
+        "string": "Use the Shelter Helper mobile app to use the mobile version"
+    },
+    "animals": {
+        "genderTitle": "Gender animal",
+        "genderFemale": "Female",
+        "genderMale": "Male",
+        "typeAnimal": "Type animal",
+        "dog": "Dog",
+        "cat": "Cat",
+        "sterilized": "Sterilized?",
+        "yes": "Yes",
+        "no": "No",
+        "sterilizedYes": "Sterilized",
+        "sterilizedNo": "Not sterilized",
+        "more": "more info",
+        "booked": "Booked",
+        "name": "Name",
+        "date": "Date",
+        "gender": "Gender",
+        "where": "Where we are?",
+        "nameShelter": "Shelter name",
+        "addressShelter": "Shelter address",
+        "emailShelter": "Shelter email",
+        "phoneShelter": "Shelter phone",
+        "book": "Book",
+        "accept": "Confirm",
+        "title": "Congratulations, you have successfully booked the pet",
+        "text": "You have booked an animal on",
+        "update": "Update"
+    },
+    "announcements": {
+        "needs": "Needs",
+        "description": "Description",
+        "place": "City",
+        "address": "Address",
+        "phone": "Phone",
+        "dateAnnouncement": "Date",
+        "status": "Status",
+        "done": "Done",
+        "notDone": "notDone"
+    },
+    "admin_header": {
+        "main": "Main",
+        "create": "Create",
+        "reports": "Reports",
+        "announcements": "Announcements",
+        "profile": "Profile",
+        "logout": "Log out",
+        "createShelter": "Create shelter",
+        "createAnimal": "Create animal",
+        "createAnnouncements": "Create announcement"
+    },
+    "user_header": {
+        "main": "Main",
+        "charts": "Charts of help",
+        "animals": "Animals",
+        "announcements": "Announcements",
+        "profile": "Profile",
+        "logout": "Log out"
+    },
+    "register": {
+        "title": "Registration",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "phone": "Phone",
+        "password": "Password",
+        "submit": "Registration",
+        "login": "Login",
+        "save": "Save",
+        "edit": "Edit"
+
+    },
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "submit": "Login",
+        "register": "Registration"
+    },
+    "profile": {
+        "title": "Personal inforamtion",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "phone": "Phone",
+        "edit": "Edit"
+    },
+    "shelter_profile": {
+        "title": "Shelter info",
+        "name": "Name",
+        "city": "City",
+        "address": "Adress",
+        "phone": "Phone",
+        "email": "Email",
+        "edit": "Edit"
+    },
+    "create_shelter": {
+        "title": "Create shelter",
+        "name": "Name",
+        "city": "City",
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email",
+        "photo": "Photo",
+        "submit": "Create",
+        "save": "Save",
+        "edit": "Edit"
+
+    },
+    "create_animal": {
+        "title": "Add animal",
+        "name": "Name",
+        "weight": "Weight",
+        "type": {
+            "title": "Animal type",
+            "dog": "Dog",
+            "cat": "Cat"
+        },
+        "gender": {
+            "title": "Gender",
+            "male": "Male",
+            "female": "Female"
+        },
+        "sterilization": {
+            "title": "Sterilization",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "date_format": "dd.mm.yyyy",
+        "description": "Description",
+        "submit": "Add animal"
+    },
+    "create_announcement": {
+        "title": "Create announcement",
+        "type": {
+            "food": "Food",
+            "toys": "Toys",
+            "dishes": "Dishes",
+            "medicines": "Medicines"
+        },
+        "description": "Description",
+        "submit": "Add announcement"
+    },
+    "charts": {
+        "animalGiven": "Report on animals released from your shelter",
+        "yourAnimal": "Your animal",
+        "givenAway": "Devoted animals",
+        "chartAnimal": "Schedule of devoted animals",
+        "createAnnouncement": "Schedule created ads",
+        "allAds": "All creating ads",
+        "allAnimal": "All created animals",
+        "createAnimal": "Charts of all created animals",
+        "allDoneAnnouncement": "All done announcements",
+        "chartDoneAnnouncement": "Chart of all done announcements"
+    }
+}

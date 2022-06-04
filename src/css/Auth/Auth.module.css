@@ -1,0 +1,110 @@
+/*//font-family: 'Comfortaa', cursive;*/
+/*font-family: 'Lemon', cursive;*/
+
+.formRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    position: relative;
+    left: 600px;
+    height: 500px;
+    background: #fffefe;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+
+.form {
+    width: 500px;
+}
+
+.formRegister h2 {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    color: #000000;
+}
+
+.checkbox {
+    bottom: -4px;
+    width: 35px;
+    position: relative;
+    height: 25px;
+    padding: 20px;
+}
+
+.label {
+    margin-top: -5px;
+}
+
+.input {
+    border: none;
+    width: 500px;
+    height: 50px;
+    position: relative;
+    bottom: 15px;
+    background: #F2D8C0;
+    padding: 5px 5px 5px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    margin-bottom: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.formData {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.App-logo {
+    pointer-events: none;
+    position: absolute;
+    top: -450px;
+    right: -500px;
+    z-index: 3;
+    opacity: 1;
+}
+.App-logo2 {
+    pointer-events: none;
+    position: absolute;
+    top: 400px;
+    z-index: 3;
+    left: -450px;
+    opacity: 1;
+}
+
+.btn {
+    margin-bottom: 30px;
+    width: 300px;
+    margin-top: 13px;
+    margin-left: 19px;
+    background: #B18065;
+    border: 1px solid #B18065;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    padding: 10px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+

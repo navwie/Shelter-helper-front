@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import styles from '../../css/User/ChangeUser.module.css'
 import {useParams} from "react-router-dom";
 import {fetchUser, updateUser} from "../../api";
+import logo from "../../img/icons8-кошачий-след-100 13.png";
+import {Translation} from 'react-i18next';
+
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()}/>;
@@ -24,9 +27,11 @@ class ChangeUser extends Component {
 
         this.setState({id: id})
         let store = localStorage.getItem('authToken')
+        let role = localStorage.getItem('role')
+        this.setState({authRole: role})
 
         fetchUser(id, store).then(resolve => {
-            this.setState({user: resolve.data.data})
+            this.setState({user: resolve.data[0]})
         });
 
     }
@@ -41,7 +46,13 @@ class ChangeUser extends Component {
             phone: this.state.user.phone,
             password: this.state.password,
         }
-        updateUser(this.state.id, user, store).then(response => (response));
+        updateUser(this.state.id, user, store)
+            .then(response => {
+                this.state.authRole === 'true'
+                    ? window.location.href = `/profileAdmin/${this.state.id}`
+                    : window.location.href = `/profileUser/${this.state.id}`
+            })
+            .catch(e => console.log(e));
     }
     handleChanges = (field, value) => {
         let fieldString = `${field}`;
@@ -69,76 +80,94 @@ class ChangeUser extends Component {
 
     render() {
         return (
-            <div className={styles.wrapper}>
-                <h1>Измените данные о себе для изменения </h1>
-                <form onSubmit={this.submit} encType="multipart/form-data">
-                    <div>
-                        <div>
-                            <div className="name">
-                                <input name='name'
-                                       id='name'
-                                       type="text"
-                                       value={(this.state.user === undefined) ? '' : this.state.user.name}
-                                       placeholder="Имя"
-                                       onClick={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                />
-                                <input name='surname'
-                                       id='surname'
-                                       type="text"
-                                       value={(this.state.user === undefined) ? '' : this.state.user.surname}
-                                       placeholder=" Фамилия"
-                                       onClick={(item) => {
-                                           this.handleChanges("surname", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("surname", item)
-                                       }}
-                                />
-                                <input name='email'
-                                       id='email'
-                                       type="text"
-                                       value={(this.state.user === undefined) ? '' : this.state.user.email}
-                                       placeholder="Електронная почта"
-                                       onClick={(item) => {
-                                           this.handleChanges("email", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("email", item)
-                                       }}
-                                />
-                                <input name='phone'
-                                       id='phone'
-                                       type="text"
-                                       value={(this.state.user === undefined) ? '' : this.state.user.phone}
-                                       placeholder="Номер телефона"
-                                       onClick={(item) => {
-                                           this.handleChanges("phone", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("phone", item)
-                                       }}
-                                />
-                                <input name='password'
-                                       id='password'
-                                       type="text"
-                                       value={this.state.password}
-                                       placeholder="Пароль"
-                                       onChange={this.changePassword}
-                                />
-                            </div>
-
+            <Translation>
+                {
+                    (t, {i18n}) => {
+                        return <div className={styles.wrapper}>
+                            <form onSubmit={this.submit} encType="multipart/form-data">
+                                <img src={logo} className="App-logo" alt="logo"/>
+                                <img src={logo} className="App-logo2" alt="logo"/>
+                                <h2>{t(`register.edit`)} </h2>
+                                <div>
+                                    <div className={styles.formData}>
+                                        <input name='name'
+                                               id='name'
+                                               type="text"
+                                               className={styles.input}
+                                               value={(this.state.user === undefined) ? '' : this.state.user.name}
+                                               placeholder={`${t(`register.name`)}`}
+                                               onClick={(item) => {
+                                                   this.handleChanges("name", item)
+                                               }}
+                                               onChange={(item) => {
+                                                   this.handleChanges("name", item)
+                                               }}
+                                        />
+                                    </div>
+                                    <div className={styles.formData}>
+                                        <input name='surname'
+                                               id='surname'
+                                               type="text"
+                                               value={(this.state.user === undefined) ? '' : this.state.user.surname}
+                                               placeholder={`${t(`register.surname`)}`}
+                                               className={styles.input}
+                                               onClick={(item) => {
+                                                   this.handleChanges("surname", item)
+                                               }}
+                                               onChange={(item) => {
+                                                   this.handleChanges("surname", item)
+                                               }}
+                                        />
+                                    </div>
+                                    <div className={styles.formData}>
+                                        <input name='email'
+                                               id='email'
+                                               type="text"
+                                               value={(this.state.user === undefined) ? '' : this.state.user.email}
+                                               placeholder={`${t(`register.email`)}`}
+                                               className={styles.input}
+                                               onClick={(item) => {
+                                                   this.handleChanges("email", item)
+                                               }}
+                                               onChange={(item) => {
+                                                   this.handleChanges("email", item)
+                                               }}
+                                        />
+                                    </div>
+                                    <div className={styles.formData}>
+                                        <input name='phone'
+                                               id='phone'
+                                               type="text"
+                                               className={styles.input}
+                                               value={(this.state.user === undefined) ? '' : this.state.user.phone}
+                                               placeholder={`${t(`register.phone`)}`}
+                                               onClick={(item) => {
+                                                   this.handleChanges("phone", item)
+                                               }}
+                                               onChange={(item) => {
+                                                   this.handleChanges("phone", item)
+                                               }}
+                                        />
+                                    </div>
+                                    <div className={styles.formData}>
+                                        <input name='password'
+                                               id='password'
+                                               type="text"
+                                               value={this.state.password}
+                                               placeholder={`${t(`register.password`)}`}
+                                               onChange={this.changePassword}
+                                               className={styles.input}
+                                        />
+                                    </div>
+                                </div>
+                                <button className={styles.btn} onClick={this.submit}>
+                                    <a>{t(`register.save`)}</a>
+                                </button>
+                            </form>
                         </div>
-                    </div>
-                    <button className={styles.btn}>
-                        <a href={`/profile/` + this.state.id}>Изменить</a>
-                    </button>
-                </form>
-            </div>
+                    }
+                }
+            </Translation>
         )
     }
 

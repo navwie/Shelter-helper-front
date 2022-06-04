@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import styles from '../../css/Admin/CreateShelter.module.css'
 import {
-    createMovie,
-    fetchFormats,
-    fetchGenres,
-    fetchHalls,
-    fetchLanguages,
+    createShelter,
 } from "../../api";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import logo from "../../img/icons8-кошачий-след-100 13.png";
+import {Translation} from 'react-i18next';
 
-export default class CreateShelter extends Component {
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()}/>;
+}
+
+class CreateShelter extends Component {
 
     constructor(props) {
         super(props);
@@ -18,9 +20,16 @@ export default class CreateShelter extends Component {
             address: "",
             phone: "",
             email: "",
+            city: "",
+            photo: null,
 
         };
         this.submit = this.submit.bind(this);
+    }
+
+    componentDidMount() {
+        const {id} = this.props.params;
+        this.setState({id: id})
     }
 
     submit = event => {
@@ -30,14 +39,22 @@ export default class CreateShelter extends Component {
             address: this.state.address,
             phone: this.state.phone,
             email: this.state.email,
-
+            city: this.state.city,
+            photo: this.state.photo,
+            user_id: this.state.id
         }
 
-        createMovie(shelter).then(response => {
-            this.setState({response: response.data});
-        }).catch(errors => {
-            this.setState({valid: errors.response.data.errors});
-        })
+        let store = localStorage.getItem('authToken')
+
+        createShelter(shelter, store)
+            .then(response => {
+                let shelter = [response.data.shelter_id];
+                localStorage.setItem('shelter_id', JSON.stringify(shelter));
+                window.location.replace(`/admin/home/` + this.state.id);
+            })
+            .catch(errors => {
+                this.setState({valid: errors.response.data.errors});
+            })
     }
 
     handleChanges = (field, value) => {
@@ -62,78 +79,115 @@ export default class CreateShelter extends Component {
         }
     }
 
+
     render() {
         return (
-            <div className={styles.wrapper}>
-                <h1>Введіть дані про притулок</h1>
-                <form onSubmit={this.submit} encType="multipart/form-data">
+            <Translation>
+                {
+                    (t, {i18n}) => {
+                        return <div className={styles.wrapper}>
+                            <form onSubmit={this.submit} encType="multipart/form-data">
+                                <img src={logo} className="App-logo" alt="logo"/>
+                                <img src={logo} className="App-logo2" alt="logo"/>
+                                <h2>{t('create_shelter.title')}</h2>
 
-                    <div className={styles.formElements}>
-                        <div className={styles.elementsRight}>
-                            <div className="name">
-                                <input name='name'
-                                       id='name'
-                                       type="text"
-                                       value={this.state.name}
-                                       placeholder="Название притулку"
-                                       onClick={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("name", item)
-                                       }}
-                                />
-                            </div>
-                            <div>
-                                <input name='address'
-                                       type="text"
-                                       id='address'
-                                       placeholder="Адреса притулку"
-                                       value={this.state.address}
-                                       onClick={(item) => {
-                                           this.handleChanges("address", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("address", item)
-                                       }}
-                                />
-                            </div>
-                            <div>
-                                <input name='phone'
-                                       type="text"
-                                       id='phone'
-                                       placeholder="Номер телефону"
-                                       value={this.state.phone}
-                                       onClick={(item) => {
-                                           this.handleChanges("phone", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("phone", item)
-                                       }}/>
-                            </div>
-                            <div>
-                                <input name='email'
-                                       type="text"
-                                       id='email'
-                                       placeholder="Email"
-                                       value={this.state.email}
-                                       onClick={(item) => {
-                                           this.handleChanges("email", item)
-                                       }}
-                                       onChange={(item) => {
-                                           this.handleChanges("email", item)
-                                       }}
-                                />
-                            </div>
+                                <div className={styles.formElements}>
+                                    <div className={styles.elementsRight}>
+                                        <div className={styles.formData}>
+                                            <input name='name'
+                                                   id='name'
+                                                   type="text"
+                                                   value={this.state.name}
+                                                   className={styles.input}
+                                                   placeholder={`${t(`create_shelter.name`)}`}
+                                                   onClick={(item) => {
+                                                       this.handleChanges("name", item)
+                                                   }}
+                                                   onChange={(item) => {
+                                                       this.handleChanges("name", item)
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className={styles.formData}>
+                                            <input name='city'
+                                                   type="text"
+                                                   id='city'
+                                                   placeholder={`${t(`create_shelter.city`)}`}
+                                                   className={styles.input}
+                                                   value={this.state.city}
+                                                   onClick={(item) => {
+                                                       this.handleChanges("city", item)
+                                                   }}
+                                                   onChange={(item) => {
+                                                       this.handleChanges("city", item)
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className={styles.formData}>
+                                            <input name='address'
+                                                   type="text"
+                                                   id='address'
+                                                   className={styles.input}
+                                                   placeholder={`${t(`create_shelter.address`)}`}
+                                                   value={this.state.address}
+                                                   onClick={(item) => {
+                                                       this.handleChanges("address", item)
+                                                   }}
+                                                   onChange={(item) => {
+                                                       this.handleChanges("address", item)
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className={styles.formData}>
+                                            <input name='phone'
+                                                   type="text"
+                                                   id='phone'
+                                                   className={styles.input}
+                                                   placeholder={`${t(`create_shelter.phone`)}`}
+                                                   value={this.state.phone}
+                                                   onClick={(item) => {
+                                                       this.handleChanges("phone", item)
+                                                   }}
+                                                   onChange={(item) => {
+                                                       this.handleChanges("phone", item)
+                                                   }}/>
+                                        </div>
+                                        <div className={styles.formData}>
+                                            <input name='email'
+                                                   type="text"
+                                                   id='email'
+                                                   placeholder={`${t(`create_shelter.email`)}`}
+                                                   className={styles.input}
+                                                   value={this.state.email}
+                                                   onClick={(item) => {
+                                                       this.handleChanges("email", item)
+                                                   }}
+                                                   onChange={(item) => {
+                                                       this.handleChanges("email", item)
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className={styles.formD}>
+                                            <input name="photo"
+                                                   type="file"
+                                                   placeholder={`${t(`create_shelter.photo`)}`}
+                                                   onChange={(e) => this.onChange(e)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <button className={styles.btn} onClick={this.submit}>
+                                    <a href=''>{t('create_shelter.submit')}</a>
+                                </button>
+                            </form>
                         </div>
-                    </div>
-                    <button className={styles.button}>
-                        <Link to='/adminMovies'>Створити притулок</Link>
-                    </button>
-                </form>
-            </div>
+                    }
+                }
+            </Translation>
 
         )
     }
-
 }
+
+export default withParams(CreateShelter);
+

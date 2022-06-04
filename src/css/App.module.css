@@ -1,0 +1,12 @@
+.wrapper {
+    position: absolute;
+    width: 319px;
+    height: 319px;
+    left: 613.78px;
+    top: -36px;
+
+    background: url('../img/icons8-кошачий-след-100 13.png');
+    opacity: 0.59;
+    filter: blur(11px);
+    transform: rotate(29.64deg);
+}
