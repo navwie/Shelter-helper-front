@@ -22,6 +22,7 @@ import phone from '../../img/494a4a5a-cf9b-4373-a3d6-1ee71c8f2a34.png'
 import map from '../../img/db0f9375-923e-48bb-a060-54b690ae2aa4.png'
 import email from '../../img/message.png'
 import {useTranslation} from "react-i18next";
+import mobile from "../../img/mobile.png";
 
 const AboutUs = () => {
     const params = useParams();
@@ -30,7 +31,7 @@ const AboutUs = () => {
     const [animal, setAnimal] = useState([])
     const [animalImages, setAnimalImages] = useState([])
     const [shelterImages, setShelterImages] = useState([])
-    const [shelter,setShelter] = useState([])
+    const [shelter, setShelter] = useState([])
     const {t, i18n} = useTranslation();
 
     useEffect(() => {
@@ -137,7 +138,13 @@ const AboutUs = () => {
                         <a href={"/login"}>{t('home.button')}</a>
                     </button>
                 </div>
-
+                <div>
+                    <button className={styles.btn} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+                        <div className={styles.blockPhone}>
+                            <h2><img src={mobile} alt=""/> {t('home.string')}</h2>
+                        </div>
+                    </button>
+                </div>
             </div>
             <div className={styles.statistics}>
                 <div className={styles.block}>
@@ -207,11 +214,11 @@ const AboutUs = () => {
                         <p>  {t('home.phone')}</p>
                     </div>
                     <div className={styles.el}>
-                        <img src={email}  alt="logo"/>
+                        <img src={email} alt="logo"/>
                         <p>{t('home.email')}</p>
                     </div>
                     <div className={styles.el}>
-                        <img src={map}  alt="logo"/>
+                        <img src={map} alt="logo"/>
                         <p>  {t('home.address')}</p>
                     </div>
                 </div>

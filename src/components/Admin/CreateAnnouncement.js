@@ -38,17 +38,19 @@ const CreateAnnouncement = () => {
             shelter_id: user
         }
         createAnnouncement({announcement}, store).then(res => Swal.fire({
-                title: 'Вітаємо, ви успішно створили об`яви!',
+                title: `${t('alert.createAnnouncement')}`,
                 icon: 'success',
                 confirmButtonText: 'ОК'
             }
         ).then(function () {
             window.location.replace(`/admin/home/` + userId);
         }))
-            .catch(e => {
-                alert(e)
-
-            })
+            .catch(res => Swal.fire({
+                    title: `${t('alert.fail')}`,
+                    icon: 'error',
+                    confirmButtonText: 'ОК'
+                }
+            ))
     }
 
     const addDescription = (e) => {

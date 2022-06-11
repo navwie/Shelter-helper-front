@@ -18,9 +18,9 @@ const HeaderUnauthorized = () => {
 
     function setLocale(locale, event) {
         event.preventDefault();
-        i18n.changeLanguage(locale).then(
-            localStorage.setItem('locale', locale)
-        );
+        i18n.changeLanguage(locale).then(() => {
+                localStorage.setItem('locale', locale);
+        });
     }
 
     return (

@@ -281,4 +281,18 @@ hr{
         transform: translate(-130%, 0);
     }
 }
-
+.blockPhone{
+    width: 300px;
+    background-color: #F2D8C0;
+    padding: 20px;
+    top: 50px;
+    position: relative;
+    border: 1px solid #F2D8C0;
+    border-radius: 50px;
+    left: 50px;
+    color: #552807;
+    font-weight: 700;
+}
+.blockPhone img{
+    width: 20%;
+}

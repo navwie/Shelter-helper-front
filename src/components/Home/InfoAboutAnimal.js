@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import Swal from "sweetalert2";
 import {resolve} from "chart.js/helpers";
 import {useTranslation} from "react-i18next";
+import button from "bootstrap/js/src/button";
 
 require('moment/locale/ru');
 
@@ -14,11 +15,10 @@ function InfoAboutAnimal() {
     const [booked, setBooked] = useState('')
     const [isBook, setIsBook] = useState(false)
     const [shelter, setShelter] = useState([])
-    const [auth, setAuth] =useState([])
+    const [auth, setAuth] = useState([])
     const [isVisible, setIsVisible] = useState(false)
     const params = useParams();
     const {t, i18n} = useTranslation();
-
 
 
     useEffect(() => {
@@ -58,8 +58,9 @@ function InfoAboutAnimal() {
                 icon: 'success',
                 text: `${t('animals.text')} ${moment(booked).format('lll')}`,
                 confirmButtonText: 'ОК'
-            }))
-            .catch(errors => console.log(errors))
+            })).then(function () {
+            window.location.reload();
+        }).catch(errors => console.log(errors))
     }
 
     const addInput = (event) => {
@@ -114,6 +115,12 @@ function InfoAboutAnimal() {
         textAlign: 'center'
     }
 
+    const h6 = {
+        marginTop: '20px',
+        color: "red",
+        fontSize: "24px"
+    }
+
     return (
         <div className={styles.containerAnimal}>
             <div>
@@ -125,15 +132,15 @@ function InfoAboutAnimal() {
 
                     <div className={styles.info}>
                         <div className={styles.p}><strong>{t('animals.name')}:</strong>{animal.name}</div>
-                        <div className={styles.p}><strong>{t('animals.date')}
-                            народженяя:</strong>{moment(animal.birthday).format('ll')}</div>
+                        <div className={styles.p}>
+                            <strong>{t('animals.date')}</strong>{moment(animal.birthday).format('ll')}</div>
                         <div className={styles.p}><strong>{t('animals.gender')}:</strong>{animal.gender}</div>
                         <div className={styles.p}><strong>{t('animals.sterilized')}:</strong>{animal.sterilized === true
                             ? `${t('animals.yes')}`
                             : `${t('animals.no')}`
                         }</div>
-                        <div className={styles.p}><strong>Тип:</strong>{animal.type}</div>
-                        <div className={styles.p}><strong>Вага:</strong>{animal.weight}</div>
+                        <div className={styles.p}><strong>{t('animals.type')}:</strong>{animal.type}</div>
+                        <div className={styles.p}><strong>{t('animals.weight')}:</strong>{animal.weight}</div>
                     </div>
                 </div>
                 <p>{t('animals.where')}</p>
@@ -143,7 +150,8 @@ function InfoAboutAnimal() {
                          alt=""/>
                     <div className={styles.info}>
                         <div className={styles.p}><strong>{t('animals.nameShelter')}: </strong> {shelter.name}</div>
-                        <div className={styles.p}><strong>{t('animals.addressShelter')}:</strong> {shelter.city} , {shelter.address}
+                        <div className={styles.p}>
+                            <strong>{t('animals.addressShelter')}:</strong> {shelter.city} , {shelter.address}
                         </div>
                         <div className={styles.p}><strong>{t('animals.emailShelter')}: </strong> {shelter.email}</div>
                         <div className={styles.p}><strong>{t('animals.phoneShelter')}: </strong> {shelter.phone}</div>
@@ -152,7 +160,11 @@ function InfoAboutAnimal() {
             </div>
 
             {
-                auth !== null && isVisible === false && isBook === false && <button style={book} onClick={event => addInput(event)}>{t('animals.book')}</button>
+                auth !== null && isVisible === false && isBook === false &&
+                <button style={book} onClick={event => addInput(event)}>{t('animals.book')}</button>
+            }
+            {
+                auth == null && <h6 style={h6}> {t('animals.condition')}</h6>
             }
             {
                 isVisible === true && isBook === false && <div className='d-flex justify-content-center'>

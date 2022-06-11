@@ -1,9 +1,10 @@
-import React, { useState} from 'react'
+import React, {useState} from 'react'
 import styles from '../../css/Auth/Auth.module.css'
 import {Link} from "react-router-dom";
 import {fetchLoginUser} from "../../api";
 import logo from "../../img/icons8-кошачий-след-100 13.png";
 import {useTranslation} from "react-i18next";
+import Swal from "sweetalert2";
 
 
 export default function Authorization() {
@@ -42,24 +43,30 @@ export default function Authorization() {
             localStorage.setItem('role', res.data.role);
             localStorage.setItem('shelter_id', JSON.stringify(res.data.shelter_id.map(el => el.id)));
 
-            if(res.data.role){
+            if (res.data.role) {
                 window.location.replace('/admin/home/' + res.data.userId);
-            }else{
+            } else {
                 window.location.replace('/user/home/' + res.data.userId);
 
             }
 
         })
             .catch(e => {
-                alert(e)
+                Swal.fire({
+                        title: `${t(`alert.failLogin`)}`,
+                        icon: 'error',
+                        confirmButtonText: 'ОК'
+                    },
+                )
+
             })
     }
     return (
         <div className={styles.formRegister}>
             <form onSubmit={submit} className={styles.formA}>
                 <div>
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <img src={logo} className="App-logo2" alt="logo" />
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <img src={logo} className="App-logo2" alt="logo"/>
                     <h2>{t('login.title')}</h2>
                     <div className={styles.formData}>
                         <input

@@ -17,6 +17,7 @@ import dog from '../../img/png_dog_1334.png'
 import phone from '../../img/494a4a5a-cf9b-4373-a3d6-1ee71c8f2a34.png'
 import map from '../../img/db0f9375-923e-48bb-a060-54b690ae2aa4.png'
 import email from '../../img/message.png'
+import mobile from '../../img/mobile.png'
 import {useTranslation} from "react-i18next";
 
 const UserHome = () => {
@@ -27,7 +28,7 @@ const UserHome = () => {
     const [animal, setAnimal] = useState([])
     const [animalImages, setAnimalImages] = useState([])
     const [shelterImages, setShelterImages] = useState([])
-    const [shelter,setShelter] = useState([])
+    const [shelter, setShelter] = useState([])
 
 
     useEffect(() => {
@@ -131,7 +132,9 @@ const UserHome = () => {
 
                 <div className={styles.add}>
                     <button className={styles.btn} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-                        <div className={styles.string}><p>{t('home.string')}</p></div>
+                        <div className={styles.blockPhone}>
+                            <h2><img src={mobile} alt=""/> {t('home.string')}</h2>
+                        </div>
                     </button>
                 </div>
 
@@ -204,11 +207,11 @@ const UserHome = () => {
                         <p> {t('home.phone')}</p>
                     </div>
                     <div className={styles.el}>
-                        <img src={email}  alt="logo"/>
+                        <img src={email} alt="logo"/>
                         <p>{t('home.email')}</p>
                     </div>
                     <div className={styles.el}>
-                        <img src={map}  alt="logo"/>
+                        <img src={map} alt="logo"/>
                         <p> {t('home.address')}</p>
                     </div>
                 </div>

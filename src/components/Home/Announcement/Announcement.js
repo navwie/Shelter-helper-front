@@ -8,6 +8,7 @@ import toys from '../../../img/toys.png'
 import medicines from '../../../img/medicines.png'
 import moment from "moment/moment";
 import {useTranslation} from "react-i18next";
+
 require('moment/locale/ru');
 
 const Announcement = ({announcement}) => {
@@ -24,7 +25,13 @@ const Announcement = ({announcement}) => {
                             <div className={styles.shelter}>{announcement.shelters.name}</div>
                             <div className={styles.info}>
                                 <p><strong>{t('announcements.needs')}</strong></p>
-                                {announcement.topic}
+                                {
+                                    announcement.topic === 'dishes' && <p>{t('create_announcement.type.dishes')}</p>
+                                    || announcement.topic === "toys" && <p>{t('create_announcement.type.toys')}</p>
+                                    || announcement.topic === "food" && <p>{t('create_announcement.type.food')}</p>
+                                    || announcement.topic === "medicines" &&
+                                    <p>{t('create_announcement.type.medicines')}</p>
+                                }
                             </div>
                             <div className={styles.info}>
                                 <p><strong>{t('announcements.description')}</strong></p>
@@ -39,7 +46,7 @@ const Announcement = ({announcement}) => {
                                 {announcement.shelters.address}
                             </div>
                             <div className={styles.info}>
-                                <p><strong>{t('announcements.phone')} :</strong> </p>
+                                <p><strong>{t('announcements.phone')} :</strong></p>
                                 {announcement.shelters.phone}
                             </div>
                             <div className={styles.info}>
@@ -47,7 +54,7 @@ const Announcement = ({announcement}) => {
                                 {moment(announcement.shelters.created_at).format('ll')}
                             </div>
                             <div className={styles.info}>
-                                <p > <strong>{t('announcements.status')}</strong></p>
+                                <p><strong>{t('announcements.status')}</strong></p>
                                 <p className={styles.red}>
                                     {announcement.done === null
                                         ? `${t('announcements.notDone')}`

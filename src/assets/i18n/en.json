@@ -26,7 +26,7 @@
         "email": "Email",
         "address": "Address",
         "street": "Street Lesya Ukrainka 11",
-        "string": "Use the Shelter Helper mobile app to use the mobile version"
+        "string": "Mobile app"
     },
     "animals": {
         "genderTitle": "Gender animal",
@@ -54,7 +54,10 @@
         "accept": "Confirm",
         "title": "Congratulations, you have successfully booked the pet",
         "text": "You have booked an animal on",
-        "update": "Update"
+        "update": "Update",
+        "weight": "Weight",
+        "type": "type",
+        "condition": "You must be authorized to book an animal"
     },
     "announcements": {
         "needs": "Needs",
@@ -96,7 +99,12 @@
         "submit": "Registration",
         "login": "Login",
         "save": "Save",
-        "edit": "Edit"
+        "edit": "Edit",
+        "invalidName": "Name is required",
+        "invalidSurname": "Surname is required",
+        "invalidEmail": "Email is required",
+        "invalidPhone": "Phone is required",
+        "invalidPassword": "Password is required and more than 8 symbols"
 
     },
     "login": {
@@ -181,5 +189,12 @@
         "createAnimal": "Charts of all created animals",
         "allDoneAnnouncement": "All done announcements",
         "chartDoneAnnouncement": "Chart of all done announcements"
+    },
+    "alert": {
+        "cancel": "Your data are incorrect",
+        "ok": "Congratulation you are successfully register ",
+        "createAnnouncement": "You successfully create announcement",
+        "fail": "Data is incorrect,please enter correct data",
+        "failLogin": "Логін чи пароль було введено неправильно"
     }
 }
