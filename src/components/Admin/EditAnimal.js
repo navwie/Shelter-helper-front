@@ -55,7 +55,7 @@ class EditAnimal extends Component {
             photo: this.state.animal.photo,
             type: this.state.type,
             gender: this.state.gender,
-            sterilized: this.state.sterilized,
+            sterilized: Boolean(this.state.sterilized),
             shelter_id: shelter[0],
             description: this.state.animal.description
         }

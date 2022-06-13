@@ -45,6 +45,7 @@ class ChangeUser extends Component {
             email: this.state.user.email,
             phone: this.state.user.phone,
             password: this.state.password,
+            role: this.state.user.role
         }
         updateUser(this.state.id, user, store)
             .then(response => {

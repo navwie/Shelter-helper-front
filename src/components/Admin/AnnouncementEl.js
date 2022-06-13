@@ -20,10 +20,18 @@ const AnnouncementEl = ({announcement}) => {
     const submitAnnouncementDone = (id) => {
         console.log(id)
         let auth = localStorage.getItem('authToken')
-        announcementDone(id, auth).then(resolve => console.log(resolve))
+        announcementDone(id, auth).then(resolve => window.location.reload())
     }
 
-    const done = {}
+    const done = {
+        backgroundColor : "#B18065",
+        width: '190px',
+        fontSize: '24px',
+        marginTop: "20px",
+        borderRadius : '20px',
+        color: 'white',
+        border: '1px solid #B18065'
+    }
 
     return (
         <div className={styles.announcement}>
@@ -66,7 +74,7 @@ const AnnouncementEl = ({announcement}) => {
 
                             {announcement.done === null &&
                                 <button style={done} onClick={() => submitAnnouncementDone(announcement.id)}>
-                                    >{t('announcements.done')}</button>}
+                                    {t('announcements.done')}</button>}
                         </div>
                     )
                 })

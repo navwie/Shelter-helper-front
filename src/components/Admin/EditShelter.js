@@ -46,6 +46,8 @@ class ChangeShelter extends Component {
             address: this.state.shelter.address,
             phone: this.state.shelter.phone,
             email: this.state.shelter.email,
+            photo: this.state.shelter.photo,
+
 
         }
         updateShelter(this.state.id, shelter, store)

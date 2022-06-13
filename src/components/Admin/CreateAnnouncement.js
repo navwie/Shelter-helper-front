@@ -32,12 +32,18 @@ const CreateAnnouncement = () => {
         let store = localStorage.getItem('authToken')
         let userId = localStorage.getItem('id')
 
+        let shelter = JSON.parse(localStorage.getItem('shelter_id'));
+        console.log(shelter)
+
+
         let announcement = {
             topic: needs,
             description: description,
             shelter_id: user
         }
-        createAnnouncement({announcement}, store).then(res => Swal.fire({
+
+
+        createAnnouncement(announcement, store).then(res => Swal.fire({
                 title: `${t('alert.createAnnouncement')}`,
                 icon: 'success',
                 confirmButtonText: 'ОК'
